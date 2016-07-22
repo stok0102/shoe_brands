@@ -13,7 +13,7 @@ describe('brand path', {:type => :feature}) do
     Brand.create({name: 'Ricks'})
     visit '/brands'
     click_link 'Ricks'
-    fill_in('store', with: 'Hanks')
+    fill_in('new_brand', with: 'Hanks')
     click_button 'Rename Brand'
     expect(page).to have_content('Hanks')
   end

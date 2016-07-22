@@ -34,3 +34,20 @@ delete '/store/:id' do
   @store.delete
   redirect '/stores'
 end
+
+post '/brands' do
+  name = params.fetch 'name'
+  brand = Brand.create({name: name})
+  redirect '/brands'
+end
+
+get '/brand/:id' do
+  @brand = Brand.find(params.fetch('id'))
+  erb :brand
+end
+
+delete '/brand/:id' do
+  @brand = Brand.find(params.fetch('id'))
+  @brand.delete
+  redirect '/brands'
+end

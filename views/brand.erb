@@ -1,7 +1,7 @@
 <h1><%= @brand.name %></h1>
 <div class="row well">
   <div class="col-sm-6">
-    <h3>Brands</h3>
+    <h3>Stores</h3>
 
     <% if @brand.stores.any? %>
     <ul>
@@ -15,10 +15,21 @@
 
     <form action="/brand/<%= @brand.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
+      <select name="store">
+        <% @stores.each do |store| %>
+        <option value="<%= store.id %>"><%= store.name %></option>
+        <% end %>
+      </select>
+      <button type="submit" name="button">Add to Store</button>
+    </form>
+
+    <form action="/brand/<%= @brand.id %>/name" method="post">
+      <input type="hidden" name="_method" value="patch">
       <label for="new_brand">Rename Your Brand</label>
       <input type="text" name="new_brand" value="">
       <button type="submit" name="button">Rename Brand</button>
     </form>
+
     <form action="/brand/<%= @brand.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <label for="delete_brand">Delete This Brand</label>

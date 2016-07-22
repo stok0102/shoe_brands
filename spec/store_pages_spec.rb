@@ -17,4 +17,22 @@ describe('store path', {:type => :feature}) do
     click_button 'Rename Store'
     expect(page).to have_content('Hanks')
   end
+
+  it "allows a user to add a brand to a store" do
+    Brand.create({name: 'Yoohoos'})
+    Store.create({name: 'Bad Shoes'})
+    visit '/stores'
+    click_link 'Bad Shoes'
+    select('Yoohoos', from: 'brand')
+    click_button 'Carry this brand'
+    expect(page).to have_content('Yoohoos')
+  end
+
+  it "allows user to delete a store" do
+    Store.create({name: 'Foot Stuff'})
+    visit '/stores'
+    click_link 'Foot Stuff'
+    click_button 'Delete Store'
+    expect(page).to have_no_content('Foot Stuff')
+  end
 end

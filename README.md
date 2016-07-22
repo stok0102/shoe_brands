@@ -1,3 +1,7 @@
+# Shoe Brand Finder
+
+An app to associate shoes brands with stores and vice versa using Ruby with ActiveRecord.
+
 ## User Stories
 
 * As a user, I want to be able to add, update, delete and list shoe stores.
@@ -11,12 +15,6 @@
 * As a user, I want store names and shoe brands to be saved with a capital letter no matter how I enter them.
 
 * As a user, I do not want stores and shoes to be saved if I enter a blank name.
-
-## Creating a database for this app in PostgreSQL
-
-    CREATE DATABASE shoe_brands;
-    CREATE TABLE brands (id serial PRIMARY KEY, name varchar)
-    CREATE TABLE stores (id serial PRIMARY KEY, name varchar)
 
 ## Installation
 

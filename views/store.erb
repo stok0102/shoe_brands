@@ -15,6 +15,16 @@
 
     <form action="/store/<%= @store.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
+      <select name="brand">
+        <% @brands.each do |brand| %>
+        <option value="<%= brand.id %>"><%= brand.name %></option>
+        <% end %>
+      </select>
+      <button type="submit" name="button">Carry this brand</button>
+    </form>
+
+    <form action="/store/<%= @store.id %>/name" method="post">
+      <input type="hidden" name="_method" value="patch">
       <label for="new_store">Rename Your Store</label>
       <input type="text" name="new_store" value="">
       <button type="submit" name="button">Rename Store</button>

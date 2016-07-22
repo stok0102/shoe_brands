@@ -30,11 +30,19 @@ get '/store/:id' do
   erb :store
 end
 
-patch '/store/:id' do
+patch '/store/:id/name' do
   name = params.fetch('new_store')
   @store = Store.find(params.fetch('id'))
   @store.update({name: name})
   redirect("/store/".concat(@store.id().to_s()))
+end
+
+patch '/store/:id' do
+  @store = Store.find(params.fetch('id'))
+  brand = Brand.find(params.fetch 'brand')
+  @store.brands.push(brand)
+  redirect("/store/".concat(@store.id().to_s()))
+
 end
 
 delete '/store/:id' do
@@ -59,6 +67,7 @@ patch '/brand/:id' do
   @brand = Brand.find(params.fetch('id'))
   store = Store.find(params.fetch 'store')
   @brand.stores.push(store)
+  redirect("/brand/".concat(@brand.id().to_s()))
 end
 
 patch '/brand/:id/name' do

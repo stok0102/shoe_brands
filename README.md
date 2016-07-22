@@ -1,4 +1,4 @@
-# Shoe Brand Finder
+# Shoe Brand Finder :shoe:
 
 An app to associate shoes brands with stores and vice versa using Ruby with ActiveRecord.
 

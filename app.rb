@@ -20,6 +20,6 @@ end
 
 post '/stores' do
   name = params.fetch 'name'
-  store = Store.create({name: name})
+  @store = Store.create({name: name})
   redirect '/stores'
 end

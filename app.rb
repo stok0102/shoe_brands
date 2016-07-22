@@ -28,3 +28,9 @@ get '/store/:id' do
   @store = Store.find(params.fetch('id'))
   erb :store
 end
+
+delete '/store/:id' do
+  @store = Store.find(params.fetch('id'))
+  @store.delete
+  redirect '/stores'
+end

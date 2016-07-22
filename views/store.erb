@@ -13,7 +13,7 @@
       <p>This store needs brands!</p>
     <% end %>
 
-    <form action="/store/<%= @store.id %>" method="post">
+    <form class="form-group" action="/store/<%= @store.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
       <select name="brand">
         <% @brands.each do |brand| %>
@@ -23,13 +23,13 @@
       <button type="submit" name="button">Carry this brand</button>
     </form>
 
-    <form action="/store/<%= @store.id %>/name" method="post">
+    <form class="form-group" action="/store/<%= @store.id %>/name" method="post">
       <input type="hidden" name="_method" value="patch">
       <label for="new_store">Rename Your Store</label>
-      <input type="text" name="new_store" value="">
+      <input type="text" class = "form-control" name="new_store" value="">
       <button type="submit" name="button">Rename Store</button>
     </form>
-    <form action="/store/<%= @store.id %>" method="post">
+    <form class="form-group" action="/store/<%= @store.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <label for="delete_store">Delete This Store</label>
       <button type="submit" name="button">Delete Store</button>

@@ -1,0 +1,31 @@
+<h1><%= @brand.name %></h1>
+<div class="row well">
+  <div class="col-sm-6">
+    <h3>Brands</h3>
+
+    <% if @brand.stores.any? %>
+    <ul>
+      <% @brand.stores.each do |store| %>
+      <li><a href="/store/ <%= store.id %>"> <%= store.name %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>This brand needs to be in stores!</p>
+    <% end %>
+
+    <form action="/brand/<%= @brand.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <label for="new_brand">Rename Your Brand</label>
+      <input type="text" name="new_brand" value="">
+      <button type="submit" name="button">Rename Brand</button>
+    </form>
+    <form action="/brand/<%= @brand.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="delete_brand">Delete This Brand</label>
+      <button type="submit" name="button">Delete Brand</button>
+    </form>
+  </div>
+</div>
+
+<h3><a href="/">Home</a></h3>
+<h3><a href="/brands">Brands</a></h3>

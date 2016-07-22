@@ -29,6 +29,13 @@ get '/store/:id' do
   erb :store
 end
 
+patch '/store/:id' do
+  name = params.fetch('new_store')
+  @store = Store.find(params.fetch('id'))
+  @store.update({name: name})
+  redirect("/store/".concat(@store.id().to_s()))
+end
+
 delete '/store/:id' do
   @store = Store.find(params.fetch('id'))
   @store.delete
@@ -44,6 +51,13 @@ end
 get '/brand/:id' do
   @brand = Brand.find(params.fetch('id'))
   erb :brand
+end
+
+patch '/brand/:id' do
+  name = params.fetch('new_brand')
+  @brand = Brand.find(params.fetch('id'))
+  @brand.update({name: name})
+  redirect("/brand/".concat(@brand.id().to_s()))
 end
 
 delete '/brand/:id' do
